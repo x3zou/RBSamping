@@ -1,4 +1,4 @@
-# RBSamping: A Resolution-based Sampling Algorithm for InSAR Surface Displacement Data
+# RBSamping: A Resolution-Based Sampling Algorithm for InSAR Surface Displacement Data
 
 If using this code, please cite the following paper(s):
 
