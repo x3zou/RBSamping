@@ -17,7 +17,7 @@ if data_type ==1
 end
 
 if data_type == 2
-    data = [dir,'des/sen_asc_los_ll.grd'];
+    data = [dir,'des/sen_des_los_ll.grd'];
     lke = [dir,'des/look/look_e.grd'];
     lkn = [dir,'des/look/look_n.grd'];
     lku = [dir,'des/look/look_u.grd'];
