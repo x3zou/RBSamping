@@ -36,8 +36,8 @@ minhgt       = 200;    % hgt cutoff to use in hgt scaling (only if demfile is se
 maskdist     = 10e3;    % distance around fault trace to mask data, m
 throwout     = 10;      % throw out resamp boxes with < throwout percent points
 
-Lp          = 10; %not sure what unit it should be (km? m?)
-Wp          = 10; %not sure what unit it should be (km? m?)
+Lp          = 10; %km
+Wp          = 10; %km
 maxnp       = 850;     % maximum # points in resampling (could end up as a few more)
 smoo        = 1;
 xzone       = [];
