@@ -7,6 +7,8 @@ addpath('/Volumes/T7/Research/PamirProject/Resample_Lohman/Mesh2d')
 save = 0; % 0: don't save the output; 1: save the output
 iint=4;%number of iterations
 data_type = 2; %1: ascending: 850 ; 2: descending: 700 max np
+dir='/Volumes/T7/Research/PamirProject/real_data/SEN/';%path to loading and saving data
+
 
 %% Create a fault structure (remember to update those parameters once you start a new iteration!)
 faultstruct=struct();
@@ -19,29 +21,19 @@ faultstruct.vertices=[4.72e3,8.04e3];%midpoint of the fault, m
 
 %% Load the data
 if data_type == 1
-    data = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/sen_asc_los_ll.grd';
-    model = ['/Volumes/T7/Research/PamirProject/real_data/SEN/asc/model',num2str(iint),'.txt'];
-    lke = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/look/look_e.grd';
-    lkn = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/look/look_n.grd';
-    lku = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/look/look_u.grd';
-
-%     data = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/uncut/los_ll.grd';
-%     lke = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/uncut/look_e.grd';
-%     lkn = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/uncut/look_n.grd';
-%     lku = '/Volumes/T7/Research/PamirProject/real_data/SEN/asc/uncut/look_u.grd';
+    data = [dir,'asc/sen_asc_los_ll.grd'];
+    model = [dir,'asc/model',num2str(iint),'.txt'];
+    lke = [dir,'asc/look/look_e.grd'];
+    lkn = [dir,'asc/look/look_n.grd'];
+    lku = [dir,'asc/look/look_u.grd'];
 end
 
 if data_type == 2
-    data = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/sen_des_los_ll.grd';
-    model = ['/Volumes/T7/Research/PamirProject/real_data/SEN/des/model',num2str(iint),'.txt'];
-    lke = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/look/look_e.grd';
-    lkn = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/look/look_n.grd';
-    lku = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/look/look_u.grd';
-
-%     data = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/uncut/los_ll.grd';
-%     lke = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/uncut/look_e.grd';
-%     lkn = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/uncut/look_n.grd';
-%     lku = '/Volumes/T7/Research/PamirProject/real_data/SEN/des/uncut/look_u.grd';
+    data = [dir,'des/sen_asc_los_ll.grd'];
+    model = [dir,'des/model',num2str(iint),'.txt'];
+    lke = [dir,'des/look/look_e.grd'];
+    lkn = [dir,'des/look/look_n.grd'];
+    lku = [dir,'des/look/look_u.grd'];
 end
 
 
@@ -168,19 +160,19 @@ ylabel('km')
 if save ==1
 
     if data_type == 1 %ascending
-        writematrix(X,['/Volumes/T7/Research/PamirProject/real_data/SEN/asc/tri_output_BF',num2str(iint),'/X.txt'])
-        writematrix(Y,['/Volumes/T7/Research/PamirProject/real_data/SEN/asc/tri_output_BF',num2str(iint),'/Y.txt'])
-        writematrix(sampled_ori_data,['/Volumes/T7/Research/PamirProject/real_data/SEN/asc/tri_output_BF',num2str(iint),'/data.txt'])
-        writematrix(S,['/Volumes/T7/Research/PamirProject/real_data/SEN/asc/tri_output_BF',num2str(iint),'/look.txt'])
-        writematrix(data_std,['/Volumes/T7/Research/PamirProject/real_data/SEN/asc/tri_output_BF',num2str(iint),'/data_std.txt'])
+        writematrix(X,[dir,'asc/tri_output_BF',num2str(iint),'/X.txt'])
+        writematrix(Y,[dir,'asc/tri_output_BF',num2str(iint),'/Y.txt'])
+        writematrix(sampled_ori_data,[dir,'asc/tri_output_BF',num2str(iint),'/data.txt'])
+        writematrix(S,[dir,'asc/tri_output_BF',num2str(iint),'/look.txt'])
+        writematrix(data_std,[dir,'asc/tri_output_BF',num2str(iint),'/data_std.txt'])
     end
 
     if data_type == 2 %descending
-        writematrix(X,['/Volumes/T7/Research/PamirProject/real_data/SEN/des/tri_output_BF',num2str(iint),'/X.txt'])
-        writematrix(Y,['/Volumes/T7/Research/PamirProject/real_data/SEN/des/tri_output_BF',num2str(iint),'/Y.txt'])
-        writematrix(sampled_ori_data,['/Volumes/T7/Research/PamirProject/real_data/SEN/des/tri_output_BF',num2str(iint),'/data.txt'])
-        writematrix(S,['/Volumes/T7/Research/PamirProject/real_data/SEN/des/tri_output_BF',num2str(iint),'/look.txt'])
-        writematrix(data_std,['/Volumes/T7/Research/PamirProject/real_data/SEN/des/tri_output_BF',num2str(iint),'/data_std.txt'])
+        writematrix(X,[dir,'des/tri_output_BF',num2str(iint),'/X.txt'])
+        writematrix(Y,[dir,'des/tri_output_BF',num2str(iint),'/Y.txt'])
+        writematrix(sampled_ori_data,[dir,'des/tri_output_BF',num2str(iint),'/data.txt'])
+        writematrix(S,[dir,'des/tri_output_BF',num2str(iint),'/look.txt'])
+        writematrix(data_std,[dir,'des/tri_output_BF',num2str(iint),'/data_std.txt'])
     end
 
 end
